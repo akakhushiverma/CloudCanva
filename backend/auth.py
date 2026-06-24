@@ -100,6 +100,10 @@ def get_current_user(request: Request) -> dict:
     Returns decoded token claims.
     Use as a FastAPI dependency.
     """
+    # Dev mode: skip auth when SKIP_AUTH=true (local development only)
+    if os.environ.get("SKIP_AUTH", "").lower() == "true":
+        return {"username": "dev-user", "sub": "dev-user-id"}
+
     auth_header = request.headers.get("Authorization", "")
     if not auth_header.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Missing or invalid authorization header")

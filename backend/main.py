@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from template_registry import TemplateRegistry
 from generators.orcherastor import TerraformOrchestrator
 import json
@@ -25,9 +28,9 @@ app.add_middleware(
 )
 
 # ─── Configuration ───────────────────────────────────────────────
-AWS_REGION = "eu-north-1"
-S3_BUCKET = "cloudcanva-terraform-exports"
-DYNAMODB_TABLE = "cloudcanva-projects"
+AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
+S3_BUCKET = os.environ.get("S3_BUCKET", "cloudcanva-terraform-exports-hareniv")
+DYNAMODB_TABLE = os.environ.get("DYNAMODB_TABLE", "CloudCanva-Projects")
 
 # ─── Multi-Region Support ─────────────────────────────────────────
 REGION_CONFIG = {

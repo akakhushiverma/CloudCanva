@@ -1,0 +1,21 @@
+# Environment variables (secrets - never commit)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Temp files from Terraform generation
+tmp*/
+tf_output/
+*.zip
+
+# IDE
+.vscode/
+.idea/

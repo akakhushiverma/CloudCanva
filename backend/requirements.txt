@@ -4,3 +4,4 @@ uvicorn
 boto3
 python-jose[cryptography]
 requests
+python-dotenv
