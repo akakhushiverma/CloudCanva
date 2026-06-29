@@ -668,6 +668,9 @@ def post_process_ai_response(data: dict, region: str = "eu-north-1", region_conf
 
     # Fix each node
     for node in nodes:
+        # Ensure React Flow node type is 'service' for proper rendering
+        node["type"] = "service"
+
         label = node.get("data", {}).get("label", "")
         props = node.get("data", {}).get("properties", {})
 
